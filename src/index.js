@@ -8,7 +8,7 @@ const colors = [
   '#009688',
   '#795548',
 ];
-
+let timerId;
 
 const btnStart = document.querySelector('[data-action="start"]');
 const btnStop = document.querySelector('[data-action="stop"]');
@@ -26,16 +26,23 @@ const randomIntegerFromInterval = (min, max) => {
 };
 
 
-function onclickStart(e) {
-    let randomNumber = randomIntegerFromInterval(0, 5);
-    colorBody.style.background=`${colors[randomNumber]}`
+
+function onclickStart(e) {    
+   onChangeColorBody()
   
 }
 
 function onclickStop() {
-    
+    clearInterval(timerId)
+    console.log('stop');
 }
 
 
-
+function onChangeColorBody() {
+  timerId=  setInterval(() => {
+        colorBody.style.background=`${colors[randomIntegerFromInterval(0, 5)]}`
+  }, 1000)
+    
+    
+}
 
