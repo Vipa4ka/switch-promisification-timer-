@@ -14,10 +14,8 @@ const btnStart = document.querySelector('[data-action="start"]');
 const btnStop = document.querySelector('[data-action="stop"]');
 const colorBody = document.querySelector('body');
 
-
 btnStart.addEventListener('click', onclickStart);
 btnStop.addEventListener('click', onclickStop);
-
 
 
 // генерация случайного числа
@@ -26,23 +24,21 @@ const randomIntegerFromInterval = (min, max) => {
 };
 
 
-
 function onclickStart(e) {    
-   onChangeColorBody()
-  
-}
+    onChangeColorBody()
+  btnStart.disabled = true;
+};
 
 function onclickStop() {
     clearInterval(timerId)
-    console.log('stop');
-}
+    btnStart.disabled = false;
+};
 
 
 function onChangeColorBody() {
-  timerId=  setInterval(() => {
-        colorBody.style.background=`${colors[randomIntegerFromInterval(0, 5)]}`
-  }, 1000)
-    
-    
-}
+    timerId = setInterval(() => {
+        colorBody.style.background = `${colors[randomIntegerFromInterval(0, 5)]}`
+    }, 1000);      
+};
+
 
